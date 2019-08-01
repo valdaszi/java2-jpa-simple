@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'lt.bit.java2.jpa'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.3.Final'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    providedCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+}
