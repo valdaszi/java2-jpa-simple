@@ -35,5 +35,7 @@ public class Main {
 
         System.out.println(title.getTitle() + " " + title.getFromDate() + " " + title.getToDate());
         System.out.println(title.getEmployee().getFullName());
+
+        em.close();
     }
 }
