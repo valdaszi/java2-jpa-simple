@@ -11,6 +11,8 @@ public final class EntityManagerHelper {
 
     private static final Logger LOG = Logger.getLogger(EntityManagerHelper.class.getName());
 
+    public static final String FETCH_GRAPH = "javax.persistence.fetchgraph";
+
     private static EntityManagerFactory entityManagerFactory;
 
     static {

@@ -8,8 +8,22 @@ import java.util.List;
 
 @Entity
 @Table(name = "employees")
+@NamedEntityGraph(
+        name = Employee.Graph_Titles,
+        attributeNodes = {
+                @NamedAttributeNode("titles")
+        }
+)
+@NamedQuery(
+        name = Employee.Query_By_Name,
+        query = "SELECT A FROM Employee A ORDER BY A.firstName"
+)
+
 @Data
 public class Employee {
+
+    public static final String Graph_Titles = "graph.Employee.titles";
+    public static final String Query_By_Name = "query.Employee.byName";
 
     @Id
     @Column(name = "emp_no")
@@ -31,7 +45,9 @@ public class Employee {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY,
+            cascade = CascadeType.PERSIST,
+            orphanRemoval = true)
     private List<Title> titles;
 
     public String getFullName() {
